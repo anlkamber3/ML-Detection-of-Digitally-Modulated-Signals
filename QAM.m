@@ -84,8 +84,12 @@ for nEN = 1:length(snr_db) % SNR POINTS
     end % End of while loop
     
 end %end for (SNR points)
-theory = 3*qfunc(sqrt((1/5)*snr_db));
-semilogy(snr_db, nBitErrors_grey./nTransmittedFrames_grey/nBitsPerFrame, 'b-x',snr_db, nBitErrors_uniform./nTransmittedFrames_uniform/nBitsPerFrame,"r-x",snr_db,theory,"bd",snr_db,theory,"rs");
+
+snr = 10 .^(snr_db/10);
+theory_uniform = qfunc(sqrt((1/5)*snr));
+theory_grey = (3/4)*qfunc(sqrt((1/5)*snr));
+semilogy(snr_db, nBitErrors_grey./nTransmittedFrames_grey/nBitsPerFrame, 'b-x',snr_db, nBitErrors_uniform./nTransmittedFrames_uniform/nBitsPerFrame,"r-x",snr_db,theory_grey,"bd",snr_db,theory_uniform,"rs");
 legend("16-QAM Grey mapping","16-QAM Uniform Mapping","Theory Grey Mapping","Theory Uniform Mapping",'interpreter','latex');
 grid("on");
 xlabel('SNR (dB)'); ylabel('BER');
+
