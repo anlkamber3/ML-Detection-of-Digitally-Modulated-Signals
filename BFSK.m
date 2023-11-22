@@ -41,8 +41,16 @@ for nEN = 1:length(snr_db) % SNR POINTS
         end
     end % End of while loop
 end %end for (SNR points)
-theory = qfunc(sqrt(snr_db));
+
+snr = 10 .^(snr_db/10);
+theory = qfunc(sqrt(snr));
 semilogy(snr_db, nBitErrors./nTransmittedFrames/nBitsPerFrame, 'r-x',snr_db,theory,"bs");
 legend("BFSK BER Performance versus $\frac{E_b}{N_0}$","Analytic Solution",'interpreter','latex');
 grid("on");
 xlabel('$\frac{E_b}{N_0}$ (dB)','interpreter','latex'); ylabel('BER');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%QUESTION 7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% semilogy(snr_db, nBitErrors./nTransmittedFrames/nBitsPerFrame, 'r-x');
+% grid("on");
+% xlabel('SNR (dB)','interpreter','latex'); ylabel('BER');
+% hold on;
