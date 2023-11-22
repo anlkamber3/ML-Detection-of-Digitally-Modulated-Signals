@@ -41,7 +41,8 @@ for nEN = 1:length(snr_db) % SNR POINTS
         end
     end % End of while loop
 end %end for (SNR points)
-semilogy(snr_db, nBitErrors./nTransmittedFrames/nBitsPerFrame,"r-x");
-legend("QPSK BER Performance versus SNR",'interpreter','latex');
-grid("on");
-xlabel('SNR (dB)'); ylabel('BER');
+% semilogy(snr_db, nBitErrors./nTransmittedFrames/nBitsPerFrame,"r-x");
+% legend("QPSK BER Performance versus SNR",'interpreter','latex');
+% grid("on");
+% xlabel('SNR (dB)'); ylabel('BER');
+
